@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fsnip.topicdata.dao.OthersAPIDao">
+    <resultMap id="BaseResultMap" type="com.fsnip.topicdata.model.ArticleInfo">
+        <result column="Client_ID" jdbcType="BIGINT" property="client_ID"/>
+        <result column="Subject_ID" jdbcType="VARCHAR" property="subject_ID"/>
+        <result column="Extracted_Date" jdbcType="VARCHAR" property="extracted_Date"/>
+        <result column="Extracted_Article_Count" jdbcType="VARCHAR" property="extracted_Article_Count"/>
+        <result column="Read_Article_Count" jdbcType="VARCHAR" property="read_Article_Count"/>
+        <result column="Selected_Article_Count" jdbcType="VARCHAR" property="selected_Article_Count"/>
+        <result column="Negative_Article_Count" jdbcType="VARCHAR" property="negative_Article_Count"/>
+        <result column="MaybeNegative_Article_Count" jdbcType="VARCHAR" property="maybeNegative_Article_Count"/>
+        <result column="Unread_MbNgt_Article_Count" jdbcType="VARCHAR" property="unread_MbNgt_Article_Count"/>
+        <result column="Positive_Article_Count" jdbcType="VARCHAR" property="positive_Article_Count"/>
+    </resultMap>
+
+    <resultMap id="ArticleKeywords" type="com.fsnip.topicdata.model.ArticleDetail">
+        <result column="Article_Detail_ID" jdbcType="VARCHAR" property="article_Detail_ID"/>
+        <result column="Website_Group_ID" jdbcType="VARCHAR" property="website_Group_ID"/>
+        <result column="Media_Type_Code" jdbcType="VARCHAR" property="media_Type_Code"/>
+        <result column="Is_Manual_Added" jdbcType="VARCHAR" property="is_Manual_Added"/>
+        <result column="Website_Column_Level" jdbcType="VARCHAR" property="website_Column_Level"/>
+        <result column="Website_Important_Level" jdbcType="VARCHAR" property="website_Important_Level"/>
+        <result column="Article_Title" jdbcType="VARCHAR" property="article_Title"/>
+        <result column="Article_Abstract" jdbcType="VARCHAR" property="article_Abstract"/>
+        <result column="Article_Focus_Keywords" jdbcType="VARCHAR" property="article_Focus_Keywords"/>
+        <result column="Article_Content" jdbcType="VARCHAR" property="article_Content"/>
+        <result column="Article_Author" jdbcType="VARCHAR" property="article_Author"/>
+        <result column="Article_ViewCount" jdbcType="VARCHAR" property="article_ViewCount"/>
+        <result column="Article_ReplyCount" jdbcType="VARCHAR" property="article_ReplyCount"/>
+        <result column="Article_ForwardCount" jdbcType="VARCHAR" property="article_ForwardCount"/>
+        <result column="Article_PubTime" jdbcType="VARCHAR" property="article_PubTime"/>
+        <result column="Province_Name" jdbcType="VARCHAR" property="province_Name"/>
+        <result column="City_Name" jdbcType="VARCHAR" property="city_Name"/>
+    </resultMap>
+
+    <resultMap id="Keywords" type="com.fsnip.topicdata.model.ArticleDetailVo">
+        <result column="Author_ID" jdbcType="VARCHAR" property="author_ID"/>
+        <result column="Article_Detail_ID" jdbcType="VARCHAR" property="article_Detail_ID"/>
+        <result column="Article_URL" jdbcType="VARCHAR" property="article_URL"/>
+        <result column="Article_Search_Keywords" jdbcType="VARCHAR" property="article_Search_Keywords"/>
+        <result column="Article_Title" jdbcType="VARCHAR" property="article_Title"/>
+        <result column="Article_Content" jdbcType="VARCHAR" property="article_Content"/>
+        <result column="Article_PubTime" jdbcType="VARCHAR" property="article_PubTime"/>
+        <result column="Website_No" jdbcType="VARCHAR" property="website_No"/>
+        <result column="Article_Content_FingerPrint" jdbcType="VARCHAR" property="article_Content_FingerPrint"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+Client_ID,Subject_ID,Extracted_Date,Extracted_Article_Count,Read_Article_Count,
+Selected_Article_Count,Negative_Article_Count,MaybeNegative_Article_Count,Unread_MbNgt_Article_Count,Positive_Article_Count
+    </sql>
+    <sql id="Key_Words">
+        Article_Detail_ID,Website_Group_ID,Media_Type_Code,Is_Manual_Added,
+        Website_Column_Level,Website_Important_Level,
+        Article_Title,Article_Abstract,Article_Focus_Keywords,Article_Content,
+        Article_Author,Article_ViewCount,Article_ReplyCount,
+        Article_PubTime,Province_Name,City_Name
+    </sql>
+    <select id="findArticleInfo" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM stat_website_subject
+        WHERE 1=1
+        <if test="articlecount !=null and articlecount !=''">
+          and  Extracted_Article_Count like #{articlecount}
+        </if>
+        <if test=" null != offset and null != limit">
+            LIMIT ${offset},${limit};
+        </if>
+    </select>
+    <select id="findArticleInfoCount" resultType="java.lang.Integer">
+        SELECT
+        count(1)
+        FROM stat_website_subject
+        WHERE 1=1
+        <if test="articlecount !=null and articlecount !=''">
+            and  Extracted_Article_Count like #{articlecount}
+        </if>
+    </select>
+
+    <select id="findArticleInfoByKey" resultMap="ArticleKeywords">
+        SELECT
+        <include refid="Key_Words"/>
+        from article_detail
+        WHERE 1=1
+        <if test="searchKeywords !=null and searchKeywords !=''">
+            and Article_Focus_Keywords LIKE "%"#{searchKeywords}"%"
+        </if>
+        <if test=" null != offset and null != limit">
+            LIMIT ${offset},${limit};
+        </if>
+    </select>
+    <select id="findArticleInfoByKeyCount" resultType="java.lang.Integer">
+        SELECT
+        count(1)
+        from article_detail
+        WHERE 1=1
+        <if test="searchKeywords !=null and searchKeywords !=''">
+            and Article_Focus_Keywords LIKE "%"#{searchKeywords}"%"
+        </if>
+    </select>
+    <select id="findArticleInfoByKeywords" resultMap="Keywords">
+        select
+        Author_ID,Article_Detail_ID,Article_URL,Article_Search_Keywords,Article_Title,
+        Article_Content,Article_PubTime,Website_No,Article_Content_FingerPrint
+        from article_detail
+        where 1=1
+        <if test="searchKeywords !=null and searchKeywords !=''">
+            and Article_Search_Keywords LIKE "%"#{searchKeywords}"%"
+        </if>
+        <if test=" null != offset and null != limit">
+            LIMIT ${offset},${limit};
+        </if>
+    </select>
+    <select id="findArticleInfoByKeywordsCount" resultType="java.lang.Integer">
+        select
+        count(1)
+        from article_detail
+        where 1=1
+        <if test="searchKeywords !=null and searchKeywords !=''">
+            and Article_Search_Keywords LIKE "%"#{searchKeywords}"%"
+        </if>
+    </select>
+</mapper>

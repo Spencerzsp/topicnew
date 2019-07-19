@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fsnip.topicdata.dao.ProductionLicenseDao">
+    <resultMap id="ProductionCertificateResultMap" type="com.fsnip.topicdata.model.ProductionLicense">
+        <result column="SCZMC" jdbcType="VARCHAR" property="SCZMC"/>
+        <result column="SCXKZBH" jdbcType="VARCHAR" property="SCXKZBH"/>
+        <result column="SHXYDM" jdbcType="VARCHAR" property="SHXYDM"/>
+        <result column="RCJDGLJG" jdbcType="VARCHAR" property="RCJDGLJG"/>
+        <result column="FDDBR" jdbcType="VARCHAR" property="FDDBR"/>
+        <result column="ZS" jdbcType="VARCHAR" property="ZS"/>
+        <result column="RCJDGLRY" jdbcType="VARCHAR" property="RCJDGLRY"/>
+        <result column="FZJG" jdbcType="VARCHAR" property="FZJG"/>
+        <result column="SCDZ" jdbcType="VARCHAR" property="SCDZ"/>
+        <result column="SPFL" jdbcType="VARCHAR" property="SPFL"/>
+        <result column="QFR" jdbcType="VARCHAR" property="QFR"/>
+        <result column="FZRQ" jdbcType="VARCHAR" property="FZRQ"/>
+        <result column="YXQZ" jdbcType="VARCHAR" property="YXQZ"/>
+        <result column="WSCKDZ" jdbcType="VARCHAR" property="WSCKDZ"/>
+        <result column="SPTJJLB" jdbcType="VARCHAR" property="SPTJJLB"/>
+        <result column="SCXKZXX_ID" jdbcType="VARCHAR" property="SCXKZXX_ID"/>
+        <result column="LBBH" jdbcType="VARCHAR" property="LBBH"/>
+        <result column="LBMC" jdbcType="VARCHAR" property="LBMC"/>
+        <result column="PZMX" jdbcType="VARCHAR" property="PZMX"/>
+        <result column="BZ" jdbcType="VARCHAR" property="BZ"/>
+    </resultMap>
+    <resultMap id="OperatorsInfoResultMap" type="com.fsnip.topicdata.model.OperatorsInfo">
+        <result column="JYZMC" jdbcType="VARCHAR" property="JYZMC"/>
+        <result column="SHXYDMZJHM" jdbcType="VARCHAR" property="SHXYDMZJHM"/>
+        <result column="JJXZ" jdbcType="VARCHAR" property="JJXZ"/>
+        <result column="ZS" jdbcType="VARCHAR" property="ZS"/>
+        <result column="JYCS" jdbcType="VARCHAR" property="JYCS"/>
+        <result column="CKDZ" jdbcType="VARCHAR" property="CKDZ"/>
+        <result column="XKZBH" jdbcType="VARCHAR" property="XKZBH"/>
+        <result column="ZTYT" jdbcType="VARCHAR" property="ZTYT"/>
+        <result column="JYXM" jdbcType="VARCHAR" property="JYXM"/>
+        <result column="RCJDGLJG" jdbcType="VARCHAR" property="RCJDGLJG"/>
+        <result column="RCJDGLRY" jdbcType="VARCHAR" property="RCJDGLRY"/>
+        <result column="YXQZ" jdbcType="VARCHAR" property="YXQZ"/>
+        <result column="QFR" jdbcType="VARCHAR" property="QFR"/>
+        <result column="FZRQ" jdbcType="VARCHAR" property="FZRQ"/>
+        <result column="FZJG" jdbcType="VARCHAR" property="FZJG"/>
+        <result column="ZGRS" jdbcType="VARCHAR" property="ZGRS"/>
+        <result column="YJBM" jdbcType="VARCHAR" property="YJBM"/>
+        <result column="XM" jdbcType="VARCHAR" property="XM"/>
+        <result column="ZW" jdbcType="VARCHAR" property="ZW"/>
+        <result column="XB" jdbcType="VARCHAR" property="XB"/>
+        <result column="MZ" jdbcType="VARCHAR" property="MZ"/>
+        <result column="HJDJZZ" jdbcType="VARCHAR" property="HJDJZZ"/>
+        <result column="ZJLX" jdbcType="VARCHAR" property="ZJLX"/>
+        <result column="ZJH" jdbcType="VARCHAR" property="ZJH"/>
+        <result column="GDDH" jdbcType="VARCHAR" property="GDDH"/>
+        <result column="YDDH" jdbcType="VARCHAR" property="YDDH"/>
+        <result column="XMA" jdbcType="VARCHAR" property="aXM"/>
+        <result column="ZWA" jdbcType="VARCHAR" property="aZW"/>
+        <result column="RMDWA" jdbcType="VARCHAR" property="aRMDW"/>
+        <result column="XBA" jdbcType="VARCHAR" property="aXB"/>
+        <result column="MZA" jdbcType="VARCHAR" property="aMZ"/>
+        <result column="HJDJZZA" jdbcType="VARCHAR" property="aHJDJZZ"/>
+        <result column="ZJLXA" jdbcType="VARCHAR" property="aZJLX"/>
+        <result column="ZJHA" jdbcType="VARCHAR" property="aZJH"/>
+        <result column="GDDHA" jdbcType="VARCHAR" property="aGDDH"/>
+        <result column="YDDHA" jdbcType="VARCHAR" property="aYDDH"/>
+        <result column="XMB" jdbcType="VARCHAR" property="cXM"/>
+        <result column="ZWB" jdbcType="VARCHAR" property="cZW"/>
+        <result column="XBB" jdbcType="VARCHAR" property="cXB"/>
+        <result column="MZB" jdbcType="VARCHAR" property="cMZ"/>
+        <result column="HJDJZZB" jdbcType="VARCHAR" property="cHJDJZZ"/>
+        <result column="ZJLXB" jdbcType="VARCHAR" property="cZJLX"/>
+        <result column="ZJHB" jdbcType="VARCHAR" property="cZJH"/>
+        <result column="GDDHB" jdbcType="VARCHAR" property="cGDDH"/>
+        <result column="YDDHB" jdbcType="VARCHAR" property="cYDDH"/>
+        <result column="RMDWB" jdbcType="VARCHAR" property="cRMDW"/>
+        <result column="GZB" jdbcType="VARCHAR" property="cGZ"/>
+        <result column="WZDWB" jdbcType="VARCHAR" property="cWZDW"/>
+        <result column="JKZBHB" jdbcType="VARCHAR" property="cJKZBH"/>
+    </resultMap>
+
+
+    <select id="findProductByCardId" resultMap="ProductionCertificateResultMap">
+        select
+        *
+        from  sc_core_sc_xkzxx as xkzxx
+        left join sc_core_sc_xkzmx as xkzmx
+        on xkzxx.ID=xkzmx.SCXKZXX_ID
+        <if test="null != id and  id != '' ">
+            where  xkzxx.SCXKZBH like '%${id}%'
+        </if>
+        <if test=" null != offset and null != limit">
+            LIMIT #{offset},#{limit};
+        </if>
+    </select>
+    <select id="findProductByCardIdCount" resultType="java.lang.Integer">
+        select
+        count(1)
+        from  sc_core_sc_xkzxx as xkzxx
+        left join sc_core_sc_xkzmx as xkzmx
+        on xkzxx.ID=xkzmx.SCXKZXX_ID
+        <if test="null != id and  id != '' ">
+            where  xkzxx.SCXKZBH like '%${id}%'
+        </if>
+    </select>
+    <select id="findProductByName" resultMap="ProductionCertificateResultMap">
+        select
+        *
+        from  sc_core_sc_xkzxx as xkzxx
+        left join sc_core_sc_xkzmx as xkzmx
+        on xkzxx.ID=xkzmx.SCXKZXX_ID
+        <if test="null != name and name !=''">
+            where  xkzxx.SCZMC like  '%${name}%'
+        </if>
+        <if test=" null != offset and null != limit">
+            LIMIT #{offset},#{limit};
+        </if>
+    </select>
+    <select id="findProductByNameCount" resultType="java.lang.Integer">
+        select
+        count(1)
+        from  sc_core_sc_xkzxx as xkzxx
+        left join sc_core_sc_xkzmx as xkzmx
+        on xkzxx.ID=xkzmx.SCXKZXX_ID
+        <if test="null != name and name !=''">
+            where  xkzxx.SCZMC like  '%${name}%'
+        </if>
+    </select>
+    <select id="findOperatorByCardId"  resultMap="OperatorsInfoResultMap">
+        select
+        a.JYZMC,
+        a.ZS,
+        a.JYCS,
+        a.JJXZ,
+        a.CKDZ,
+        a.SHXYDMZJHM,
+        a.ZTYT,
+        a.JYXM,
+        a.YXQZ,
+        a.QFR,
+        a.FZRQ,
+        a.FZJG,
+        a.XKZBH,
+        a.RCJDGLJG,
+        a.RCJDGLRY,
+        b.XM,
+        b.XB,
+        b.ZJLX,
+        b.ZJH,
+        b.MZ,
+        b.HJDJZZ,
+        b.ZW,
+        b.GDDH,
+        b.YDDH,
+        c.XM,
+        c.XB XBA,
+        c.ZJLX ZJLXA,
+        c.ZJH ZJHA,
+        c.MZ MZA,
+        c.HJDJZZ HJDJZZA,
+        c.ZW ZWA,
+        c.RMDW RMDWA,
+        c.GDDH GDDHA,
+        c.YDDH YDDHA,
+        d.XM,
+        d.XB XBB,
+        d.ZJLX ZJLXB,
+        d.ZJH ZJHB,
+        d.MZ MZB,
+        d.HJDJZZ HJDJZZB,
+        d.ZW ZWB,
+        d.RMDW RMDWB,
+        d.GDDH GDDHB,
+        d.YDDH YDDHB,
+        d.GZ GZB,
+        d.WZDW WZDWB,
+        d.JKZBH JKZBHB
+        from sp_core_e_spjyxkxx as a left join sp_core_e_ryxx as b
+        on a.ID=b.SPJYXKXXID left join sp_core_e_ryxx c
+        on a.ID=c.SPJYXKXXID left join sp_core_e_ryxx d
+        on a.ID=d.SPJYXKXXID
+        where b.RYLX ='1'
+        and c.RYLX ='2'
+        and d.RYLX ='3'
+        <if test="null != id and id !=''">
+            and a.XKZBH like '%${id}%'
+        </if>
+        <if test=" null != offset and null != limit">
+            LIMIT #{offset},#{limit};
+        </if>
+    </select>
+    <select id="findOperatorByCardIdCount"  resultType="java.lang.Integer">
+        select
+        count(1)
+        from sp_core_e_spjyxkxx as a left join sp_core_e_ryxx as b
+        on a.ID=b.SPJYXKXXID left join sp_core_e_ryxx c
+        on a.ID=c.SPJYXKXXID left join sp_core_e_ryxx d
+        on a.ID=d.SPJYXKXXID
+        where b.RYLX ='1'
+        and c.RYLX ='2'
+        and d.RYLX ='3'
+        <if test="null != id and id !=''">
+            and a.XKZBH like '%${id}%'
+        </if>
+    </select>
+    <select id="findOperatorByName"  resultMap="OperatorsInfoResultMap">
+        select
+        a.JYZMC,
+        a.ZS,
+        a.JYCS,
+        a.JJXZ,
+        a.CKDZ,
+        a.SHXYDMZJHM,
+        a.ZTYT,
+        a.JYXM,
+        a.YXQZ,
+        a.QFR,
+        a.FZRQ,
+        a.FZJG,
+        a.XKZBH,
+        a.RCJDGLJG,
+        a.RCJDGLRY,
+        b.XM,
+        b.XB,
+        b.ZJLX,
+        b.ZJH,
+        b.MZ,
+        b.HJDJZZ,
+        b.ZW,
+        b.GDDH,
+        b.YDDH,
+        c.XM XMA,
+        c.XB XBA,
+        c.ZJLX ZJLXA,
+        c.ZJH ZJHMA,
+        c.MZ MZA,
+        c.HJDJZZ HJDJZZA,
+        c.ZW ZWA,
+        c.RMDW RMDWA,
+        c.GDDH GDDHA,
+        c.YDDH YDDHA,
+        d.XM XMB,
+        d.XB XBB,
+        d.ZJLX ZJLXB,
+        d.ZJH ZJHMB,
+        d.MZ MZB,
+        d.HJDJZZ HJDJZZB,
+        d.ZW ZWB,
+        d.RMDW RMDWB,
+        d.GDDH GDDHB,
+        d.YDDH YDDHB,
+        d.GZ GZB,
+        d.WZDW WZDWB,
+        d.JKZBH JKZBHB
+        from sp_core_e_spjyxkxx as a left join sp_core_e_ryxx as b
+        on a.ID=b.SPJYXKXXID left join sp_core_e_ryxx c
+        on a.ID=c.SPJYXKXXID left join sp_core_e_ryxx d
+        on a.ID=d.SPJYXKXXID
+        where b.RYLX ='1'
+        and c.RYLX ='2'
+        and d.RYLX ='3'
+        <if test="null != name and name !=''">
+            and a.JYZMC like '%${name}%'
+        </if>
+        <if test=" null != offset and null != limit">
+            LIMIT #{offset},#{limit};
+        </if>
+    </select>
+    <select id="findOperatorByNameCount"  resultType="java.lang.Integer">
+        select
+        count(1)
+        from sp_core_e_spjyxkxx as a left join sp_core_e_ryxx as b
+        on a.ID=b.SPJYXKXXID left join sp_core_e_ryxx c
+        on a.ID=c.SPJYXKXXID left join sp_core_e_ryxx d
+        on a.ID=d.SPJYXKXXID
+        where b.RYLX ='1'
+        and c.RYLX ='2'
+        and d.RYLX ='3'
+        <if test="null != name and name !=''">
+            and a.JYZMC like '%${name}%'
+        </if>
+    </select>
+</mapper>

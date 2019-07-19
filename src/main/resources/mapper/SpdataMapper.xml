@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fsnip.topicdata.dao.SpdataMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.fsnip.topicdata.model.Spdata">
+        <id column="id" property="id" />
+        <result column="spdata_0" property="spdata_0" />
+        <result column="spdata_1" property="spdata_1" />
+        <result column="spdata_2" property="spdata_2" />
+        <result column="spdata_3" property="spdata_3" />
+        <result column="spdata_4" property="spdata_4" />
+        <result column="spdata_5" property="spdata_5" />
+        <result column="spdata_6" property="spdata_6" />
+        <result column="spdata_7" property="spdata_7" />
+        <result column="spdata_8" property="spdata_8" />
+        <result column="spdata_9" property="spdata_9" />
+        <result column="sp_bsb_id" property="sp_bsb_id" />
+        <result column="created_at" property="created_at" />
+        <result column="updated_at" property="updated_at" />
+        <result column="spdata_10" property="spdata_10" />
+        <result column="spdata_11" property="spdata_11" />
+        <result column="spdata_12" property="spdata_12" />
+        <result column="spdata_13" property="spdata_13" />
+        <result column="spdata_14" property="spdata_14" />
+        <result column="spdata_15" property="spdata_15" />
+        <result column="spdata_16" property="spdata_16" />
+        <result column="spdata_17" property="spdata_17" />
+        <result column="spdata_18" property="spdata_18" />
+        <result column="spdata_19" property="spdata_19" />
+        <result column="spdata_20" property="spdata_20" />
+        <result column="check_item_id" property="check_item_id" />
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fsnip.topicdata.dao.SpBsbsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.fsnip.topicdata.model.SpBsbs">
+        <id column="id" property="id" />
+        <result column="sp_s_1" property="sp_s_1" />
+        <result column="created_at" property="created_at" />
+        <result column="updated_at" property="updated_at" />
+        <result column="sp_s_2" property="sp_s_2" />
+        <result column="sp_s_3" property="sp_s_3" />
+        <result column="sp_s_4" property="sp_s_4" />
+        <result column="sp_s_5" property="sp_s_5" />
+        <result column="sp_s_6" property="sp_s_6" />
+        <result column="sp_s_7" property="sp_s_7" />
+        <result column="sp_s_8" property="sp_s_8" />
+        <result column="sp_s_9" property="sp_s_9" />
+        <result column="sp_s_10" property="sp_s_10" />
+        <result column="sp_s_11" property="sp_s_11" />
+        <result column="sp_s_12" property="sp_s_12" />
+        <result column="sp_s_13" property="sp_s_13" />
+        <result column="sp_s_14" property="sp_s_14" />
+        <result column="sp_n_15" property="sp_n_15" />
+        <result column="sp_s_16" property="sp_s_16" />
+        <result column="sp_s_17" property="sp_s_17" />
+        <result column="sp_s_18" property="sp_s_18" />
+        <result column="sp_s_19" property="sp_s_19" />
+        <result column="sp_s_20" property="sp_s_20" />
+        <result column="sp_s_21" property="sp_s_21" />
+        <result column="sp_d_22" property="sp_d_22" />
+        <result column="sp_s_23" property="sp_s_23" />
+        <result column="sp_s_24" property="sp_s_24" />
+        <result column="sp_s_25" property="sp_s_25" />
+        <result column="sp_s_26" property="sp_s_26" />
+        <result column="sp_s_27" property="sp_s_27" />
+        <result column="sp_d_28" property="sp_d_28" />
+        <result column="sp_n_29" property="sp_n_29" />
+        <result column="sp_s_30" property="sp_s_30" />
+        <result column="sp_n_31" property="sp_n_31" />
+        <result column="sp_n_32" property="sp_n_32" />
+        <result column="sp_s_33" property="sp_s_33" />
+        <result column="sp_s_34" property="sp_s_34" />
+        <result column="sp_s_35" property="sp_s_35" />
+        <result column="sp_s_36" property="sp_s_36" />
+        <result column="sp_s_37" property="sp_s_37" />
+        <result column="sp_d_38" property="sp_d_38" />
+        <result column="sp_s_39" property="sp_s_39" />
+        <result column="sp_s_40" property="sp_s_40" />
+        <result column="sp_s_41" property="sp_s_41" />
+        <result column="sp_s_42" property="sp_s_42" />
+        <result column="sp_s_43" property="sp_s_43" />
+        <result column="sp_s_44" property="sp_s_44" />
+        <result column="sp_s_45" property="sp_s_45" />
+        <result column="sp_d_46" property="sp_d_46" />
+        <result column="sp_d_47" property="sp_d_47" />
+        <result column="sp_s_48" property="sp_s_48" />
+        <result column="sp_s_49" property="sp_s_49" />
+        <result column="sp_s_50" property="sp_s_50" />
+        <result column="sp_s_51" property="sp_s_51" />
+        <result column="sp_s_52" property="sp_s_52" />
+        <result column="sp_s_53" property="sp_s_53" />
+        <result column="sp_s_54" property="sp_s_54" />
+        <result column="sp_s_55" property="sp_s_55" />
+        <result column="sp_s_56" property="sp_s_56" />
+        <result column="sp_s_57" property="sp_s_57" />
+        <result column="sp_s_58" property="sp_s_58" />
+        <result column="sp_s_59" property="sp_s_59" />
+        <result column="sp_s_60" property="sp_s_60" />
+        <result column="sp_s_61" property="sp_s_61" />
+        <result column="sp_s_62" property="sp_s_62" />
+        <result column="sp_s_63" property="sp_s_63" />
+        <result column="sp_s_64" property="sp_s_64" />
+        <result column="sp_s_65" property="sp_s_65" />
+        <result column="sp_s_66" property="sp_s_66" />
+        <result column="sp_s_67" property="sp_s_67" />
+        <result column="sp_s_68" property="sp_s_68" />
+        <result column="sp_s_69" property="sp_s_69" />
+        <result column="sp_s_70" property="sp_s_70" />
+        <result column="sp_s_71" property="sp_s_71" />
+        <result column="sp_s_72" property="sp_s_72" />
+        <result column="sp_s_73" property="sp_s_73" />
+        <result column="sp_s_74" property="sp_s_74" />
+        <result column="sp_s_75" property="sp_s_75" />
+        <result column="sp_s_76" property="sp_s_76" />
+        <result column="sp_s_77" property="sp_s_77" />
+        <result column="sp_s_78" property="sp_s_78" />
+        <result column="sp_s_79" property="sp_s_79" />
+        <result column="sp_s_80" property="sp_s_80" />
+        <result column="sp_s_81" property="sp_s_81" />
+        <result column="sp_s_82" property="sp_s_82" />
+        <result column="sp_s_83" property="sp_s_83" />
+        <result column="sp_s_84" property="sp_s_84" />
+        <result column="sp_s_85" property="sp_s_85" />
+        <result column="sp_d_86" property="sp_d_86" />
+        <result column="sp_s_87" property="sp_s_87" />
+        <result column="sp_s_88" property="sp_s_88" />
+        <result column="tname" property="tname" />
+        <result column="submit_d_flag" property="submit_d_flag" />
+        <result column="sp_n_jcxcount" property="sp_n_jcxcount" />
+        <result column="sp_s_bsfl" property="sp_s_bsfl" />
+        <result column="sp_s_2_1" property="sp_s_2_1" />
+        <result column="sp_i_state" property="sp_i_state" />
+        <result column="sp_i_jgback" property="sp_i_jgback" />
+        <result column="sp_s_reason" property="sp_s_reason" />
+        <result column="sp_i_backtimes" property="sp_i_backtimes" />
+        <result column="sp_s_201" property="sp_s_201" />
+        <result column="sp_s_202" property="sp_s_202" />
+        <result column="sp_s_203" property="sp_s_203" />
+        <result column="sp_s_204" property="sp_s_204" />
+        <result column="sp_s_205" property="sp_s_205" />
+        <result column="sp_s_206" property="sp_s_206" />
+        <result column="sp_s_207" property="sp_s_207" />
+        <result column="sp_s_208" property="sp_s_208" />
+        <result column="sp_s_209" property="sp_s_209" />
+        <result column="sp_s_210" property="sp_s_210" />
+        <result column="sp_s_211" property="sp_s_211" />
+        <result column="sp_s_212" property="sp_s_212" />
+        <result column="sp_s_213" property="sp_s_213" />
+        <result column="sp_s_214" property="sp_s_214" />
+        <result column="sp_s_215" property="sp_s_215" />
+        <result column="sp_t_procedure" property="sp_t_procedure" />
+        <result column="fail_report_path" property="fail_report_path" />
+        <result column="is_yydj" property="is_yydj" />
+        <result column="current_yycz_step" property="current_yycz_step" />
+        <result column="bgfl" property="bgfl" />
+        <result column="sp_xkz" property="sp_xkz" />
+        <result column="sp_xkz_id" property="sp_xkz_id" />
+        <result column="fail_report_at" property="fail_report_at" />
+        <result column="czb_reverted_flag" property="czb_reverted_flag" />
+        <result column="synced" property="synced" />
+        <result column="gbsj" property="gbsj" />
+        <result column="via_api" property="via_api" />
+        <result column="application_id" property="application_id" />
+        <result column="report_path" property="report_path" />
+        <result column="cyd_file_path" property="cyd_file_path" />
+        <result column="cyjygzs_file_path" property="cyjygzs_file_path" />
+        <result column="yydj_enabled_by_admin_at" property="yydj_enabled_by_admin_at" />
+        <result column="synced_at" property="synced_at" />
+        <result column="czb_reverted_reason" property="czb_reverted_reason" />
+        <result column="sp_s_220" property="sp_s_220" />
+        <result column="sp_s_221" property="sp_s_221" />
+        <result column="sp_s_222" property="sp_s_222" />
+        <result column="user_id" property="user_id" />
+        <result column="uid" property="uid" />
+        <result column="sp_s_37_user_id" property="sp_s_37_user_id" />
+        <result column="deleted_at" property="deleted_at" />
+        <result column="xsbg_file_path" property="xsbg_file_path" />
+        <result column="ca_key_status" property="ca_key_status" />
+        <result column="sp_s_city" property="sp_s_city" />
+        <result column="inspection_basis" property="inspection_basis" />
+        <result column="decision_basis" property="decision_basis" />
+        <result column="sign_date" property="sign_date" />
+        <result column="sp_s_89" property="sp_s_89" />
+        <result column="FX_jyyj_custom" property="FX_jyyj_custom" />
+        <result column="JDCJ_report_path" property="JDCJ_report_path" />
+        <result column="FXJC_report_path" property="FXJC_report_path" />
+        <result column="JDCJ_pdf_rules" property="JDCJ_pdf_rules" />
+        <result column="FXJC_pdf_rules" property="FXJC_pdf_rules" />
+        <result column="wochacha_task_id" property="wochacha_task_id" />
+        <result column="sp_s_sfjk" property="sp_s_sfjk" />
+        <result column="sp_s_ycg" property="sp_s_ycg" />
+        <result column="sp_s_sfwtsc" property="sp_s_sfwtsc" />
+        <result column="sp_s_wtsheng" property="sp_s_wtsheng" />
+        <result column="sp_s_wtshi" property="sp_s_wtshi" />
+        <result column="sp_s_wtxian" property="sp_s_wtxian" />
+        <result column="sp_s_qymc" property="sp_s_qymc" />
+        <result column="sp_s_qydz" property="sp_s_qydz" />
+        <result column="sp_s_qs" property="sp_s_qs" />
+        <result column="sp_s_lxr" property="sp_s_lxr" />
+        <result column="sp_s_tel" property="sp_s_tel" />
+        <result column="sp_s_pic" property="sp_s_pic" />
+        <result column="sp_s_sign" property="sp_s_sign" />
+        <result column="health_code" property="health_code" />
+        <result column="health_func_cat" property="health_func_cat" />
+        <result column="barcode" property="barcode" />
+        <result column="rainbowcode" property="rainbowcode" />
+        <result column="rainbowcode_url" property="rainbowcode_url" />
+        <result column="state" property="state" />
+        <result column="isdelete" property="isdelete" />
+        <result column="SYN_STATUS" property="SYN_STATUS" />
+        <result column="RECORD_INSERT_TIME" property="RECORD_INSERT_TIME" />
+        <result column="insertDate" property="insertDate" />
+
+    </resultMap>
+
+    <resultMap id="AllMap" type="com.fsnip.topicdata.model.SpBsBsAnddata">
+        <id column="id" property="id" />
+        <result column="sp_s_1" property="sp_s_1" />
+        <result column="created_at" property="created_at" />
+        <result column="updated_at" property="updated_at" />
+        <result column="sp_s_2" property="sp_s_2" />
+        <result column="sp_s_3" property="sp_s_3" />
+        <result column="sp_s_4" property="sp_s_4" />
+        <result column="sp_s_5" property="sp_s_5" />
+        <result column="sp_s_6" property="sp_s_6" />
+        <result column="sp_s_7" property="sp_s_7" />
+        <result column="sp_s_8" property="sp_s_8" />
+        <result column="sp_s_9" property="sp_s_9" />
+        <result column="sp_s_10" property="sp_s_10" />
+        <result column="sp_s_11" property="sp_s_11" />
+        <result column="sp_s_12" property="sp_s_12" />
+        <result column="sp_s_13" property="sp_s_13" />
+        <result column="sp_s_14" property="sp_s_14" />
+        <result column="sp_n_15" property="sp_n_15" />
+        <result column="sp_s_16" property="sp_s_16" />
+        <result column="sp_s_17" property="sp_s_17" />
+        <result column="sp_s_18" property="sp_s_18" />
+        <result column="sp_s_19" property="sp_s_19" />
+        <result column="sp_s_20" property="sp_s_20" />
+        <result column="sp_s_21" property="sp_s_21" />
+        <result column="sp_d_22" property="sp_d_22" />
+        <result column="sp_s_23" property="sp_s_23" />
+        <result column="sp_s_24" property="sp_s_24" />
+        <result column="sp_s_25" property="sp_s_25" />
+        <result column="sp_s_26" property="sp_s_26" />
+        <result column="sp_s_27" property="sp_s_27" />
+        <result column="sp_d_28" property="sp_d_28" />
+        <result column="sp_n_29" property="sp_n_29" />
+        <result column="sp_s_30" property="sp_s_30" />
+        <result column="sp_n_31" property="sp_n_31" />
+        <result column="sp_n_32" property="sp_n_32" />
+        <result column="sp_s_33" property="sp_s_33" />
+        <result column="sp_s_34" property="sp_s_34" />
+        <result column="sp_s_35" property="sp_s_35" />
+        <result column="sp_s_36" property="sp_s_36" />
+        <result column="sp_s_37" property="sp_s_37" />
+        <result column="sp_d_38" property="sp_d_38" />
+        <result column="sp_s_39" property="sp_s_39" />
+        <result column="sp_s_40" property="sp_s_40" />
+        <result column="sp_s_41" property="sp_s_41" />
+        <result column="sp_s_42" property="sp_s_42" />
+        <result column="sp_s_43" property="sp_s_43" />
+        <result column="sp_s_44" property="sp_s_44" />
+        <result column="sp_s_45" property="sp_s_45" />
+        <result column="sp_d_46" property="sp_d_46" />
+        <result column="sp_d_47" property="sp_d_47" />
+        <result column="sp_s_48" property="sp_s_48" />
+        <result column="sp_s_49" property="sp_s_49" />
+        <result column="sp_s_50" property="sp_s_50" />
+        <result column="sp_s_51" property="sp_s_51" />
+        <result column="sp_s_52" property="sp_s_52" />
+        <result column="sp_s_53" property="sp_s_53" />
+        <result column="sp_s_54" property="sp_s_54" />
+        <result column="sp_s_55" property="sp_s_55" />
+        <result column="sp_s_56" property="sp_s_56" />
+        <result column="sp_s_57" property="sp_s_57" />
+        <result column="sp_s_58" property="sp_s_58" />
+        <result column="sp_s_59" property="sp_s_59" />
+        <result column="sp_s_60" property="sp_s_60" />
+        <result column="sp_s_61" property="sp_s_61" />
+        <result column="sp_s_62" property="sp_s_62" />
+        <result column="sp_s_63" property="sp_s_63" />
+        <result column="sp_s_64" property="sp_s_64" />
+        <result column="sp_s_65" property="sp_s_65" />
+        <result column="sp_s_66" property="sp_s_66" />
+        <result column="sp_s_67" property="sp_s_67" />
+        <result column="sp_s_68" property="sp_s_68" />
+        <result column="sp_s_69" property="sp_s_69" />
+        <result column="sp_s_70" property="sp_s_70" />
+        <result column="sp_s_71" property="sp_s_71" />
+        <result column="sp_s_72" property="sp_s_72" />
+        <result column="sp_s_73" property="sp_s_73" />
+        <result column="sp_s_74" property="sp_s_74" />
+        <result column="sp_s_75" property="sp_s_75" />
+        <result column="sp_s_76" property="sp_s_76" />
+        <result column="sp_s_77" property="sp_s_77" />
+        <result column="sp_s_78" property="sp_s_78" />
+        <result column="sp_s_79" property="sp_s_79" />
+        <result column="sp_s_80" property="sp_s_80" />
+        <result column="sp_s_81" property="sp_s_81" />
+        <result column="sp_s_82" property="sp_s_82" />
+        <result column="sp_s_83" property="sp_s_83" />
+        <result column="sp_s_84" property="sp_s_84" />
+        <result column="sp_s_85" property="sp_s_85" />
+        <result column="sp_d_86" property="sp_d_86" />
+        <result column="sp_s_87" property="sp_s_87" />
+        <result column="sp_s_88" property="sp_s_88" />
+        <result column="tname" property="tname" />
+        <result column="submit_d_flag" property="submit_d_flag" />
+        <result column="sp_n_jcxcount" property="sp_n_jcxcount" />
+        <result column="sp_s_bsfl" property="sp_s_bsfl" />
+        <result column="sp_s_2_1" property="sp_s_2_1" />
+        <result column="sp_i_state" property="sp_i_state" />
+        <result column="sp_i_jgback" property="sp_i_jgback" />
+        <result column="sp_s_reason" property="sp_s_reason" />
+        <result column="sp_i_backtimes" property="sp_i_backtimes" />
+        <result column="sp_s_201" property="sp_s_201" />
+        <result column="sp_s_202" property="sp_s_202" />
+        <result column="sp_s_203" property="sp_s_203" />
+        <result column="sp_s_204" property="sp_s_204" />
+        <result column="sp_s_205" property="sp_s_205" />
+        <result column="sp_s_206" property="sp_s_206" />
+        <result column="sp_s_207" property="sp_s_207" />
+        <result column="sp_s_208" property="sp_s_208" />
+        <result column="sp_s_209" property="sp_s_209" />
+        <result column="sp_s_210" property="sp_s_210" />
+        <result column="sp_s_211" property="sp_s_211" />
+        <result column="sp_s_212" property="sp_s_212" />
+        <result column="sp_s_213" property="sp_s_213" />
+        <result column="sp_s_214" property="sp_s_214" />
+        <result column="sp_s_215" property="sp_s_215" />
+        <result column="sp_t_procedure" property="sp_t_procedure" />
+        <result column="fail_report_path" property="fail_report_path" />
+        <result column="is_yydj" property="is_yydj" />
+        <result column="current_yycz_step" property="current_yycz_step" />
+        <result column="bgfl" property="bgfl" />
+        <result column="sp_xkz" property="sp_xkz" />
+        <result column="sp_xkz_id" property="sp_xkz_id" />
+        <result column="fail_report_at" property="fail_report_at" />
+        <result column="czb_reverted_flag" property="czb_reverted_flag" />
+        <result column="synced" property="synced" />
+        <result column="gbsj" property="gbsj" />
+        <result column="via_api" property="via_api" />
+        <result column="application_id" property="application_id" />
+        <result column="report_path" property="report_path" />
+        <result column="cyd_file_path" property="cyd_file_path" />
+        <result column="cyjygzs_file_path" property="cyjygzs_file_path" />
+        <result column="yydj_enabled_by_admin_at" property="yydj_enabled_by_admin_at" />
+        <result column="synced_at" property="synced_at" />
+        <result column="czb_reverted_reason" property="czb_reverted_reason" />
+        <result column="sp_s_220" property="sp_s_220" />
+        <result column="sp_s_221" property="sp_s_221" />
+        <result column="sp_s_222" property="sp_s_222" />
+        <result column="user_id" property="user_id" />
+        <result column="uid" property="uid" />
+        <result column="sp_s_37_user_id" property="sp_s_37_user_id" />
+        <result column="deleted_at" property="deleted_at" />
+        <result column="xsbg_file_path" property="xsbg_file_path" />
+        <result column="ca_key_status" property="ca_key_status" />
+        <result column="sp_s_city" property="sp_s_city" />
+        <result column="inspection_basis" property="inspection_basis" />
+        <result column="decision_basis" property="decision_basis" />
+        <result column="sign_date" property="sign_date" />
+        <result column="sp_s_89" property="sp_s_89" />
+        <result column="FX_jyyj_custom" property="FX_jyyj_custom" />
+        <result column="JDCJ_report_path" property="JDCJ_report_path" />
+        <result column="FXJC_report_path" property="FXJC_report_path" />
+        <result column="JDCJ_pdf_rules" property="JDCJ_pdf_rules" />
+        <result column="FXJC_pdf_rules" property="FXJC_pdf_rules" />
+        <result column="wochacha_task_id" property="wochacha_task_id" />
+        <result column="sp_s_sfjk" property="sp_s_sfjk" />
+        <result column="sp_s_ycg" property="sp_s_ycg" />
+        <result column="sp_s_sfwtsc" property="sp_s_sfwtsc" />
+        <result column="sp_s_wtsheng" property="sp_s_wtsheng" />
+        <result column="sp_s_wtshi" property="sp_s_wtshi" />
+        <result column="sp_s_wtxian" property="sp_s_wtxian" />
+        <result column="sp_s_qymc" property="sp_s_qymc" />
+        <result column="sp_s_qydz" property="sp_s_qydz" />
+        <result column="sp_s_qs" property="sp_s_qs" />
+        <result column="sp_s_lxr" property="sp_s_lxr" />
+        <result column="sp_s_tel" property="sp_s_tel" />
+        <result column="sp_s_pic" property="sp_s_pic" />
+        <result column="sp_s_sign" property="sp_s_sign" />
+        <result column="health_code" property="health_code" />
+        <result column="health_func_cat" property="health_func_cat" />
+        <result column="barcode" property="barcode" />
+        <result column="rainbowcode" property="rainbowcode" />
+        <result column="rainbowcode_url" property="rainbowcode_url" />
+        <result column="state" property="state" />
+        <result column="isdelete" property="isdelete" />
+        <result column="SYN_STATUS" property="SYN_STATUS" />
+        <result column="RECORD_INSERT_TIME" property="RECORD_INSERT_TIME" />
+        <result column="insertDate" property="insertDate" />
+        <result column="spdata_0" property="spdata_0" />
+        <result column="spdata_1" property="spdata_1" />
+        <result column="spdata_2" property="spdata_2" />
+        <result column="spdata_3" property="spdata_3" />
+        <result column="spdata_4" property="spdata_4" />
+        <result column="spdata_5" property="spdata_5" />
+        <result column="spdata_6" property="spdata_6" />
+        <result column="spdata_7" property="spdata_7" />
+        <result column="spdata_8" property="spdata_8" />
+        <result column="spdata_9" property="spdata_9" />
+        <result column="sp_bsb_id" property="sp_bsb_id" />
+        <result column="created_at" property="created_at" />
+        <result column="updated_at" property="updated_at" />
+        <result column="spdata_10" property="spdata_10" />
+        <result column="spdata_11" property="spdata_11" />
+        <result column="spdata_12" property="spdata_12" />
+        <result column="spdata_13" property="spdata_13" />
+        <result column="spdata_14" property="spdata_14" />
+        <result column="spdata_15" property="spdata_15" />
+        <result column="spdata_16" property="spdata_16" />
+        <result column="spdata_17" property="spdata_17" />
+        <result column="spdata_18" property="spdata_18" />
+        <result column="spdata_19" property="spdata_19" />
+        <result column="spdata_20" property="spdata_20" />
+        <result column="check_item_id" property="check_item_id" />
+    </resultMap>
+    <select id="listByMaps" resultMap="BaseResultMap">
+        SELECT
+        a.*
+        FROM sp_bsbs a
+        WHERE 1=1
+        <if test=" sp_s_16 !=null and sp_s_16 !=''">
+            and a.sp_s_16  LIKE '%${sp_s_16}%'
+        </if>
+        <if test=" sp_s_17 !=null and sp_s_17 !=''">
+            and a.sp_s_17 LIKE '%${sp_s_17}%'
+        </if>
+        <if test=" sp_s_35 !=null and sp_s_35 !=''">
+            and a.sp_s_35  LIKE '%${sp_s_35}%'
+        </if>
+        <if test=" sp_s_43 !=null and sp_s_43 !=''">
+            and a.sp_s_43   LIKE '%${sp_s_43}%'
+        </if>
+        limit  ${pageNum}, ${pageSize}
+    </select>
+
+    <select id="getAllDataByMap" parameterType="java.util.Map" resultMap="AllMap">
+       SELECT
+        a.*, b.spdata_0,
+        b.spdata_1        ,
+        b.spdata_2	      ,
+        b.spdata_3	      ,
+        b.spdata_4	      ,
+        b.spdata_5	      ,
+        b.spdata_6	      ,
+        b.spdata_7	      ,
+        b.spdata_8	      ,
+        b.spdata_9	      ,
+        b.sp_bsb_id	      ,
+        b.created_at	    ,
+        b.updated_at	    ,
+        b.spdata_10	      ,
+        b.spdata_11	      ,
+        b.spdata_12	      ,
+        b.spdata_13	      ,
+        b.spdata_14	      ,
+        b.spdata_15	      ,
+        b.spdata_16	      ,
+        b.spdata_17	      ,
+        b.spdata_18	      ,
+        b.spdata_19	      ,
+        b.spdata_20	      ,
+        b.check_item_id
+        from sp_bsbs a left join spdata b on a.id = b.id where 1=1
+        <if test=" sp_s_16 !=null and sp_s_16 !=''">
+            and a.sp_s_16  LIKE '%${sp_s_16}%'
+        </if>
+        <if test=" sp_s_17 !=null and sp_s_17 !=''">
+            and a.sp_s_17  LIKE '%${sp_s_17}%'
+        </if>
+        <if test=" sp_s_35 !=null and sp_s_35 !=''">
+            and a.sp_s_35  LIKE '%${sp_s_35}%'
+        </if>
+        <if test=" sp_s_43 !=null and sp_s_43 !=''">
+            and a.sp_s_43   LIKE '%${sp_s_43}%'
+        </if>
+    </select>
+</mapper>

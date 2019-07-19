@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fsnip.topicdata.dao.StandardItemChapterItemMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.fsnip.topicdata.model.StandardItemChapterItem">
+        <id column="ID" property="id" />
+        <result column="CHAPTER_DESC" property="chapterDesc" />
+        <result column="KNOB_DESC" property="knobDesc" />
+        <result column="ITEM_DESC" property="itemDesc" />
+        <result column="CONTENT" property="content" />
+        <result column="SAVE_URL" property="saveUrl" />
+        <result column="STANDARD_NAME" property="standardName" />
+        <result column="LAWITEM_NAME" property="lawitemName" />
+        <result column="REMARK" property="remark" />
+        <result column="CHAPTER_ALIAS" property="chapterAlias" />
+        <result column="ITEM_CHAPTER_ID" property="itemChapterId" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="LAST_MODIFIED_TIME" property="lastModifiedTime" />
+        <result column="ORGANIZATION" property="organization" />
+        <result column="RECORD_INSERT_TIME" property="recordInsertTime" />
+    </resultMap>
+
+    <delete id="removeByChapterId" parameterType="long">
+       DELETE from standard_item_chapter_item where ITEM_CHAPTER_ID=${chapterId}
+    </delete>
+
+</mapper>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fsnip.topicdata.dao.CountMapper">
+    <resultMap id="ResultMap" type="com.fsnip.topicdata.model.NameCount">
+        <result column="username" property="username"/>
+        <result column="addcount" property="addcount"/>
+        <result column="selectDate" property="selectDate"/>
+    </resultMap>
+    <!-- 1-->
+    <select id="findSpCoreESpJyxkxx" resultMap="ResultMap" >
+         SELECT RCJDGLJG username , count(RCJDGLJG)  addcount ,DATE_SUB(CURDATE(),INTERVAL 1 DAY)  selectDate  from sp_core_e_spjyxkxx
+         where RCJDGLJG is not null  and  GXSJ >= DATE_SUB(CURDATE(),INTERVAL 1 DAY)      GROUP BY  RCJDGLJG
+          LIMIT #{pageNum},#{pageSize}
+    </select>
+    <select id="findSpCoreESpJyxkxxAll" resultMap="ResultMap" >
+         SELECT RCJDGLJG username , count(RCJDGLJG)  addcount ,DATE_SUB(CURDATE(),INTERVAL 1 DAY)  selectDate  from sp_core_e_spjyxkxx
+         where RCJDGLJG is not null       GROUP BY  RCJDGLJG
+    </select>
+
+    <select id="findSpCoreESpJyxkxxSize" resultType="long">
+        select count(1) from ( SELECT  count(1)  from sp_core_e_spjyxkxx
+         where RCJDGLJG is not null  and  GXSJ >= DATE_SUB(CURDATE(),INTERVAL 1 DAY)      GROUP BY  RCJDGLJG)as a
+    </select>
+    <select id="findSpCoreESpJyxkxxTotal" resultType="int">
+         SELECT count(1)  addcount  from sp_core_e_spjyxkxx
+    </select>
+    <!-- 2-->
+    <select id="findSCCoreScxkzxx" resultMap="ResultMap">
+          SELECT  RCJDGLJG  username ,count(RCJDGLJG)  addcount ,DATE_SUB(CURDATE(),INTERVAL 1 DAY)  selectDate from  sc_core_sc_xkzxx
+          where  RCJDGLJG is not null  and  RECORD_INSERT_TIME >=  DATE_SUB(CURDATE(),INTERVAL 1 DAY)   GROUP BY  RCJDGLJG
+          LIMIT #{pageNum},#{pageSize}
+    </select>
+    <select id="findSCCoreScxkzxxAll" resultMap="ResultMap">
+          SELECT  RCJDGLJG  username ,count(RCJDGLJG)  addcount ,DATE_SUB(CURDATE(),INTERVAL 1 DAY)  selectDate from  sc_core_sc_xkzxx
+          where  RCJDGLJG is not null  GROUP BY  RCJDGLJG
+
+    </select>
+
+    <select id="findSCCoreScxkzxxSize"  resultType="long">
+        select count(1) from (  SELECT  count(1)  from  sc_core_sc_xkzxx
+          where  RCJDGLJG is not null  and  RECORD_INSERT_TIME >=  DATE_SUB(CURDATE(),INTERVAL 1 DAY)   GROUP BY  RCJDGLJG)as a
+    </select>
+
+    <select id="findSCCoreScxkzxxTotal" resultType="int">
+         SELECT  count(1)   from  sc_core_sc_xkzxx
+    </select>
+
+    <!-- 3  name   RECORD_INSERT_TIME  -->
+    <select id="findFsnCloudProduct" resultMap="ResultMap">
+          SELECT  name  username ,count(name)  addcount ,DATE_SUB(CURDATE(),INTERVAL 1 DAY)  selectDate  from  fsn_cloud_product
+          where  name is not null  and RECORD_INSERT_TIME >=  DATE_SUB(CURDATE(),INTERVAL 1 DAY)   GROUP BY  name
+            LIMIT #{pageNum},#{pageSize}
+    </select>
+    <select id="findFsnCloudProductAll" resultMap="ResultMap">
+          SELECT  name  username ,count(name)  addcount ,DATE_SUB(CURDATE(),INTERVAL 1 DAY)  selectDate  from  fsn_cloud_product
+          where  name is not null    GROUP BY  name
+
+    </select>
+
+    <select id="findFsnCloudProductSize" resultType="long">
+        select count(1) from (  SELECT  count(1)    from  fsn_cloud_product
+          where  name is not null  and  RECORD_INSERT_TIME >=  DATE_SUB(CURDATE(),INTERVAL 1 DAY)   GROUP BY  name )as a
+    </select>
+    <select id="findFsnCloudProductTotal" resultType="int">
+         SELECT  count(1)   from  fsn_cloud_product
+    </select>
+
+    <!-- 4-->
+    <select id="findJgSystemJgXcJlb" resultMap="ResultMap">
+        SELECT XXCDW username  ,count(XXCDW) addcount ,DATE_SUB(CURDATE(),INTERVAL 1 DAY)  selectDate from  jg_system_jg_xcjlb
+        where  XXCDW is not null  and  RECORD_INSERT_TIME >=   DATE_SUB(CURDATE(),INTERVAL 1 DAY)   GROUP BY  XXCDW
+        LIMIT #{pageNum},#{pageSize}
+    </select>
+    <select id="findJgSystemJgXcJlbAll" resultMap="ResultMap">
+        SELECT XXCDW username  ,count(XXCDW) addcount ,DATE_SUB(CURDATE(),INTERVAL 1 DAY)  selectDate from  jg_system_jg_xcjlb
+        where  XXCDW is not null    GROUP BY  XXCDW
+
+    </select>
+    <select id="findJgSystemJgXcJlbSize" resultType="long">
+    select count(1) from (   SELECT  count(1)  from  jg_system_jg_xcjlb
+        where XXCDW is not null  and  RECORD_INSERT_TIME >=   DATE_SUB(CURDATE(),INTERVAL 1 DAY)   GROUP BY  XXCDW )as a
+    </select>
+    <select id="findJgSystemJgXcJlbTotal" resultType="int">
+        SELECT count(1) from  jg_system_jg_xcjlb
+    </select>
+
+    <!-- 5-->
+    <select id="findJgSystemLawItemChapter" resultMap="ResultMap">
+        SELECT RELEASE_BY  username ,  count(RELEASE_BY) addcount ,DATE_SUB(CURDATE(),INTERVAL 1 DAY)  selectDate  from   jg_system_law_item_chapter
+        where  RELEASE_BY is not null  and   RECORD_INSERT_TIME >=   DATE_SUB(CURDATE(),INTERVAL 1 DAY)    GROUP BY  RELEASE_BY
+         LIMIT #{pageNum},#{pageSize}
+    </select>
+
+    <select id="findJgSystemLawItemChapterAll" resultMap="ResultMap">
+        SELECT RELEASE_BY  username ,  count(RELEASE_BY) addcount ,DATE_SUB(CURDATE(),INTERVAL 1 DAY)  selectDate  from   jg_system_law_item_chapter
+        where  RELEASE_BY is not null   GROUP BY  RELEASE_BY
+    </select>
+
+    <select id="findJgSystemLawItemChapterSize" resultType="long">
+       select count(1) from (   SELECT  count(1)   from   jg_system_law_item_chapter
+        where RELEASE_BY is not null  and   RECORD_INSERT_TIME >=   DATE_SUB(CURDATE(),INTERVAL 1 DAY)    GROUP BY  RELEASE_BY )as a
+    </select>
+    <select id="findJgSystemLawItemChapterTotal" resultType="int">
+        SELECT count(1) from  jg_system_law_item_chapter
+    </select>
+
+    <!-- 6 只统计创建时间-->
+    <select id="findMymonitorArticleDetail" resultMap="ResultMap">
+        SELECT Article_ReplyCount  username ,  count(Article_ReplyCount)  addcount  ,DATE_SUB(CURDATE(),INTERVAL 1 DAY)  selectDate  from   article_detail
+         where Article_ReplyCount is not null  and    Article_PubTime >=   DATE_SUB(CURDATE(),INTERVAL 1 DAY)   GROUP BY  Article_ReplyCount
+         LIMIT #{pageNum},#{pageSize}
+    </select>
+    <select id="findMymonitorArticleDetailAll" resultMap="ResultMap">
+        SELECT Article_ReplyCount  username ,  count(Article_ReplyCount)  addcount  ,DATE_SUB(CURDATE(),INTERVAL 1 DAY)  selectDate  from   article_detail
+         where Article_ReplyCount is not null   GROUP BY  Article_ReplyCount
+
+    </select>
+
+    <select id="findMymonitorArticleDetailSize"  resultType="long">
+       select count(1) from (   SELECT   count(1)    from   article_detail
+         where  Article_ReplyCount is not null  and  Article_PubTime >=   DATE_SUB(CURDATE(),INTERVAL 1 DAY)   GROUP BY  Article_ReplyCount  )as a
+    </select>
+    <select id="findMymonitorArticleDetailTotal" resultType="int">
+      SELECT  max(Article_Detail_ID) from   article_detail;
+    </select>
+    <!-- 7-->
+    <select id="findSpBsbs" resultMap="ResultMap">
+        SELECT sp_s_43  username ,  count(sp_s_43) addcount  ,DATE_SUB(CURDATE(),INTERVAL 1 DAY)  selectDate  from   sp_bsbs
+         where  sp_s_43 is not null  and   RECORD_INSERT_TIME >=  DATE_SUB(CURDATE(),INTERVAL 1 DAY)    GROUP BY  sp_s_43
+         LIMIT #{pageNum},#{pageSize}
+    </select>
+    <select id="findSpBsbsAll" resultMap="ResultMap">
+        SELECT sp_s_43  username ,  count(sp_s_43) addcount  ,DATE_SUB(CURDATE(),INTERVAL 1 DAY)  selectDate  from   sp_bsbs
+         where  sp_s_43 is not null      GROUP BY  sp_s_43
+    </select>
+    <select id="findSpBsbsSize" resultType="long">
+     select count(1) from (    SELECT  count(1)   from   sp_bsbs
+      where sp_s_43 is not null  and  RECORD_INSERT_TIME >=  DATE_SUB(CURDATE(),INTERVAL 1 DAY)    GROUP BY  sp_s_43  )as a
+    </select>
+    <select id="findSpBsbsTotal" resultType="int">
+     SELECT  count(1)  from   sp_bsbs
+    </select>
+
+</mapper>

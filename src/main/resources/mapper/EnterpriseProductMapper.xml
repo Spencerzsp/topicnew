@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fsnip.topicdata.dao.EnterpriseProductDao">
+    <resultMap id="BaseResultMap" type="com.fsnip.topicdata.model.EnterpriseProduct">
+        <result column="productName" jdbcType="VARCHAR" property="productName"/>
+        <result column="productBarcode" jdbcType="VARCHAR" property="productBarcode"/>
+        <result column="businessBrandName" jdbcType="VARCHAR" property="businessBrandName"/>
+        <result column="productFormat" jdbcType="VARCHAR" property="productFormat"/>
+        <result column="productExpiration" jdbcType="VARCHAR" property="productExpiration"/>
+        <result column="productInstanceProductionDate" jdbcType="VARCHAR" property="productInstanceProductionDate"/>
+        <result column="productionLicenseInfoQsNo" jdbcType="VARCHAR" property="productionLicenseInfoQsNo"/>
+        <result column="productCharacteristic" jdbcType="VARCHAR" property="productCharacteristic"/>
+        <result column="productCategoryName" jdbcType="VARCHAR" property="productCategoryName"/>
+        <result column="productRegularity" jdbcType="VARCHAR" property="productRegularity"/>
+        <result column="businessUnitName" jdbcType="VARCHAR" property="businessUnitName"/>
+        <result column="productionLicenseInfoProductionAddress" jdbcType="VARCHAR" property="productionLicenseInfoProductionAddress"/>
+    </resultMap>
+
+    <select id="findByBarcode" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        a.name productName,
+        a.barcode productBarcode,
+        b.name businessBrandName,
+        a.format productFormat,
+        a.expiration_date productExpiration,
+        g.production_date productInstanceProductionDate,
+        d.qs_no productionLicenseInfoQsNo,
+        a.characteristic productCharacteristic,
+        e.name productCategoryName,
+        a.regularity productRegularity,
+        f.name businessUnitName,
+        d.production_address productionLicenseInfoProductionAddress
+        FROM
+        fsn_cloud_product a
+        left JOIN product_to_businessunit c ON a.id = c.PRODUCT_ID
+        left JOIN production_license_info d ON c.qs_id = d.id
+        left join product_instance g on a.id=g.product_id
+        left JOIN fsn_cloud_business_brand b ON a.business_brand_id = b.id
+        left join fsn_cloud_business_unit f on a.producer_id=f.id
+        left join fsn_cloud_product_category e on a.category_id=e.id
+        <if test="_parameter != null and _parameter != ''" >
+            WHERE a.barcode = #{code,jdbcType=VARCHAR}
+        </if>
+        limit 1
+    </select>
+
+    <select id="findByName" resultMap="BaseResultMap">
+        SELECT
+        a.name productName,
+        a.barcode productBarcode,
+        b.name businessBrandName,
+        a.format productFormat,
+        a.expiration_date productExpiration,
+        g.production_date productInstanceProductionDate,
+        d.qs_no productionLicenseInfoQsNo,
+        a.characteristic productCharacteristic,
+        e.name productCategoryName,
+        a.regularity productRegularity,
+        f.name businessUnitName,
+        d.production_address productionLicenseInfoProductionAddress
+        FROM
+        fsn_cloud_product a
+        left JOIN fsn_cloud_business_brand b ON a.business_brand_id = b.id
+        left JOIN product_to_businessunit c ON a.id = c.PRODUCT_ID
+        left JOIN production_license_info d ON c.qs_id = d.id
+        left join fsn_cloud_product_category e on a.category_id=e.id
+        left join fsn_cloud_business_unit f on a.producer_id=f.id
+        left join product_instance g on a.id=g.product_id
+        <if test="name  != null and name !=''">
+            WHERE a.name LIKE "%"#{name}"%"
+        </if>
+        <if test=" null != offset and null != limit">
+            LIMIT #{offset},#{limit};
+        </if>
+    </select>
+    <select id="findByNameCount" resultType="java.lang.Integer">
+        SELECT
+        count(1)
+        FROM
+        fsn_cloud_product a
+        left JOIN fsn_cloud_business_brand b ON a.business_brand_id = b.id
+        left JOIN product_to_businessunit c ON a.id = c.PRODUCT_ID
+        left JOIN production_license_info d ON c.qs_id = d.id
+        left join fsn_cloud_product_category e on a.category_id=e.id
+        left join fsn_cloud_business_unit f on a.producer_id=f.id
+        left join product_instance g on a.id=g.product_id
+        <if test="name  != null and name !=''">
+            WHERE a.name LIKE "%"#{name}"%"
+        </if>
+    </select>
+</mapper>

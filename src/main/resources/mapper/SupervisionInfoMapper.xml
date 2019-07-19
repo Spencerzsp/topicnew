@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fsnip.topicdata.dao.SupervisionDao">
+    <resultMap id="SupervisionInfoResultMap" type="com.fsnip.topicdata.model.SupervisionInfo">
+        <id column="XJHDBH" jdbcType="VARCHAR" property="XJHDBH"/>
+        <result column="XXCRY" jdbcType="VARCHAR" property="XXCRY"/>
+        <result column="XXCDW" jdbcType="VARCHAR" property="XXCDW"/>
+        <result column="XZCH" jdbcType="VARCHAR" property="XZCH"/>
+        <result column="XZTMC" jdbcType="VARCHAR" property="XZTMC"/>
+        <result column="XXKZH" jdbcType="VARCHAR" property="XXKZH"/>
+        <result column="XXXDZ" jdbcType="VARCHAR" property="XXXDZ"/>
+        <result column="XZTLX" jdbcType="VARCHAR" property="XZTLX"/>
+        <result column="XFZR" jdbcType="VARCHAR" property="XFZR"/>
+        <result column="XDQXYDJ" jdbcType="VARCHAR" property="XDQXYDJ"/>
+        <result column="XXJYCLJG1" jdbcType="VARCHAR" property="XXJYCLJG1"/>
+        <result column="XXJYCLJG2" jdbcType="VARCHAR" property="XXJYCLJG2"/>
+        <result column="XSM" jdbcType="VARCHAR" property="XSM"/>
+        <result column="XQTFJXX" jdbcType="VARCHAR" property="XQTFJXX"/>
+        <result column="X10XCUUID" jdbcType="VARCHAR" property="x10xcuuid"/>
+        <result column="b6pfnr" jdbcType="VARCHAR" property="b6pfnr"/>
+        <result column="b6pfbz" jdbcType="VARCHAR" property="b6pfbz"/>
+        <result column="X10FZ" jdbcType="VARCHAR" property="x10bz"/>
+        <result column="X10BZ" jdbcType="VARCHAR" property="x10fz"/>
+        <result column="X10FJURL" jdbcType="VARCHAR" property="x10fjurl"/>
+        <result column="B6SFZD" jdbcType="VARCHAR" property="b6sfzd"/>
+    </resultMap>
+    <select id="findSupervisionByNum"  resultMap="SupervisionInfoResultMap">
+        SELECT
+        a.XJHDBH,
+        a.XXCRY,
+        a.XXCDW,
+        a.XXCSJ,
+        a.XZCH,
+        a.XZTMC,
+        a.XXKZH,
+        a.XXXDZ,
+        a.XZTLX,
+        a.XFZR,
+        a.XDQXYDJ,
+        a.XXJYCLJG1,
+        a.XXJYCLJG2,
+        a.XSM,
+        a.XQTFJXX,
+        b.X10XCUUID,
+        b.b6pfnr,
+        b.b6pfbz,
+        b.X10FZ,
+        b.X10BZ,
+        b.X10FJURL,
+        b.B6SFZD
+        FROM
+        jg_system_jg_xcjlb a
+        left JOIN jg_system_jg_xckfjl b ON a.XUUID = b.X10XCUUID
+        <if test="name != null">
+            and a.XXCDW like  '%${name}%'
+        </if>
+        group by b.b6pfnr,b.b6pfbz
+        <if test=" null != offset and null != limit">
+            LIMIT ${offset},${limit}
+        </if>
+    </select>
+    <select id="findSupervisionByNumCount"  resultType="java.lang.Integer">
+        select
+        count(1)
+        from
+        (
+        SELECT
+        count(1)
+        FROM
+        jg_system_jg_xcjlb a
+        left JOIN jg_system_jg_xckfjl b ON a.XUUID = b.X10XCUUID
+        <if test="name != null">
+            and a.XXCDW like '%${name}%'
+        </if>
+        group by b.b6pfnr,b.b6pfbz
+        ) a
+    </select>
+
+    <select id="findSupervisionByName" resultMap="SupervisionInfoResultMap">
+        SELECT
+        a.XJHDBH,
+        a.XXCRY,
+        a.XXCDW,
+        a.XXCSJ,
+        a.XZCH,
+        a.XZTMC,
+        a.XXKZH,
+        a.XXXDZ,
+        a.XZTLX,
+        a.XFZR,
+        a.XDQXYDJ,
+        a.XXJYCLJG1,
+        a.XXJYCLJG2,
+        a.XSM,
+        a.XQTFJXX,
+        b.X10XCUUID,
+        b.b6pfnr,
+        b.b6pfbz,
+        b.X10FZ,
+        b.X10BZ,
+        b.X10FJURL,
+        b.B6SFZD
+        FROM
+        jg_system_jg_xcjlb a
+        left JOIN jg_system_jg_xckfjl b ON a.XUUID = b.X10XCUUID
+       <if test="name != null">
+           and a.xztmc like  '%${name}%'
+       </if>
+        group by b.b6pfnr,b.b6pfbz
+        <if test=" null != offset and null != limit">
+            LIMIT ${offset},${limit}
+        </if>
+    </select>
+    <select id="findSupervisionByNameCount" resultType="java.lang.Integer">
+        select
+        count(1)
+        from
+        (
+        SELECT
+        count(1)
+        FROM
+        jg_system_jg_xcjlb a
+        left JOIN jg_system_jg_xckfjl b ON a.XUUID = b.X10XCUUID
+        <if test="name != null">
+            and a.xztmc like '%${name}%'
+        </if>
+        group by b.b6pfnr,b.b6pfbz
+        ) a
+    </select>
+</mapper>

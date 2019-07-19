@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fsnip.topicdata.dao.SpInspectionAgencyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.fsnip.topicdata.model.SpInspectionAgency">
+        <id column="id" property="id" />
+        <result column="number" property="number" />
+        <result column="nominal_company_name" property="nominalCompanyName" />
+        <result column="nominal_company_adress" property="nominalCompanyAdress" />
+        <result column="sampled_company_name" property="sampledCompanyName" />
+        <result column="sampled_company_province" property="sampledCompanyProvince" />
+        <result column="sampled_company_adress" property="sampledCompanyAdress" />
+        <result column="food_name" property="foodName" />
+        <result column="specification_model" property="specificationModel" />
+        <result column="production_date" property="productionDate" />
+        <result column="trademark" property="trademark" />
+        <result column="test_result" property="testResult" />
+        <result column="inspection_agency" property="inspectionAgency" />
+        <result column="remark" property="remark" />
+        <result column="result_type" property="resultType" />
+        <result column="file_name" property="fileName" />
+        <result column="insert_date" property="insertDate" />
+    </resultMap>
+
+</mapper>

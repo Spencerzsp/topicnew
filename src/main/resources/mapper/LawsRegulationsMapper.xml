@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fsnip.topicdata.dao.LawsRegulationsDao">
+    <resultMap id="LawsRegulationsResultMap" type="com.fsnip.topicdata.model.LawsRegulations">
+        <result column="TITLE" jdbcType="VARCHAR" property="TITLE"/>
+        <result column="RELEASE_BY" jdbcType="VARCHAR" property="RELEASE_BY"/>
+        <result column="MESSAGE_NUMBER" jdbcType="VARCHAR" property="MESSAGE_NUMBER"/>
+        <result column="EFFECTIVE_DATE" jdbcType="VARCHAR" property="EFFECTIVE_DATE"/>
+        <result column="CHAPTER_DESC" jdbcType="VARCHAR" property="CHAPTER_DESC"/>
+        <result column="KNOB_DESC" jdbcType="VARCHAR" property="KNOB_DESC"/>
+        <result column="ITEM_DESC" jdbcType="VARCHAR" property="ITEM_DESC"/>
+        <result column="LAW_CONTENT" jdbcType="VARCHAR" property="LAW_CONTENT"/>
+    </resultMap>
+    <select id="findLawChapter" resultMap="LawsRegulationsResultMap">
+        SELECT
+        a.TITLE,
+        a.RELEASE_BY,
+        a.MESSAGE_NUMBER,
+        a.EFFECTIVE_DATE,
+        b.CHAPTER_DESC,
+        b.KNOB_DESC,
+        b.ITEM_DESC,
+        b.LAW_CONTENT
+        FROM
+        jg_system_law_item_chapter a
+        left JOIN jg_system_law_item_chapter_item b ON a.ID = b.ITEM_CHAPTER_ID
+        <if test="null != title and title !=''">
+            and a.TITLE like "%"#{title}"%"
+        </if>
+        <if test=" null != offset and null != limit">
+            LIMIT ${offset},${limit};
+        </if>
+    </select>
+    <select id="findLawChapterCount" resultType="java.lang.Integer">
+        SELECT
+        count(1)
+        FROM
+        jg_system_law_item_chapter a
+        left JOIN jg_system_law_item_chapter_item b ON a.ID = b.ITEM_CHAPTER_ID
+        <if test="null != title and title !=''">
+            and a.TITLE like "%"#{title}"%"
+        </if>
+    </select>
+</mapper>

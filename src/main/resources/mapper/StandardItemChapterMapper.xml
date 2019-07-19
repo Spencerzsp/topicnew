@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fsnip.topicdata.dao.StandardItemChapterMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.fsnip.topicdata.model.StandardItemChapter">
+        <id column="ID" property="id" />
+        <result column="TITLE" property="title" />
+        <result column="EFFECTIVE_DATE" property="effectiveDate" />
+        <result column="RELEASE_BY" property="releaseBy" />
+        <result column="MESSAGE_NUMBER" property="messageNumber" />
+        <result column="PUBLISH_STATE" property="publishState" />
+        <result column="COUNTRY_NAME" property="countryName" />
+        <result column="PROVINCE_NAME" property="provinceName" />
+        <result column="CITY_NAME" property="cityName" />
+        <result column="AREA_NAME" property="areaName" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="ORGANIZATION" property="organization" />
+        <result column="RECORD_INSERT_TIME" property="recordInsertTime" />
+    </resultMap>
+
+
+    <resultMap id="AllMap" type="com.fsnip.topicdata.model.ChapterItemVo">
+        <id column="ID" property="id" />
+        <result column="TITLE" property="title" />
+        <result column="EFFECTIVE_DATE" property="effectiveDate" />
+        <result column="RELEASE_BY" property="releaseBy" />
+        <result column="MESSAGE_NUMBER" property="messageNumber" />
+        <result column="PUBLISH_STATE" property="publishState" />
+        <result column="COUNTRY_NAME" property="countryName" />
+        <result column="PROVINCE_NAME" property="provinceName" />
+        <result column="CITY_NAME" property="cityName" />
+        <result column="AREA_NAME" property="areaName" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="ORGANIZATION" property="organization" />
+        <result column="RECORD_INSERT_TIME" property="recordInsertTime" />
+
+        <result column="CHAPTER_DESC" property="chapterDesc" />
+        <result column="KNOB_DESC" property="knobDesc" />
+        <result column="ITEM_DESC" property="itemDesc" />
+        <result column="CONTENT" property="content" />
+        <result column="SAVE_URL" property="saveUrl" />
+        <result column="STANDARD_NAME" property="standardName" />
+        <result column="LAWITEM_NAME" property="lawitemName" />
+        <result column="REMARK" property="remark" />
+        <result column="CHAPTER_ALIAS" property="chapterAlias" />
+        <result column="ITEM_CHAPTER_ID" property="itemChapterId" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="LAST_MODIFIED_TIME" property="lastModifiedTime" />
+        <result column="ORGANIZATION" property="organization" />
+    </resultMap>
+
+    <select id="getChapterAndItem"  parameterType="string" resultMap="AllMap">
+       SELECT
+        a.ID			,
+        a.TITLE		       ,
+        a.EFFECTIVE_DATE       ,
+        a.RELEASE_BY	       ,
+        a.MESSAGE_NUMBER       ,
+        a.PUBLISH_STATE	       ,
+        a.COUNTRY_NAME	       ,
+        a.PROVINCE_NAME	       ,
+        a.CITY_NAME	       ,
+        a.AREA_NAME	       ,
+        a.CREATE_TIME	       ,
+        a.RECORD_INSERT_TIME   ,
+        b.CHAPTER_DESC       ,
+        b.KNOB_DESC	     ,
+        b.ITEM_DESC	     ,
+        b.CONTENT	     ,
+        b.SAVE_URL	     ,
+        b.STANDARD_NAME	     ,
+        b.LAWITEM_NAME	     ,
+        b.REMARK	     ,
+        b.CHAPTER_ALIAS	     ,
+        b.ITEM_CHAPTER_ID    ,
+        b.CREATE_TIME	     ,
+        b.LAST_MODIFIED_TIME ,
+        b.ORGANIZATION
+        from  standard_item_chapter a left JOIN  standard_item_chapter_item  b on   a.id=b.ITEM_CHAPTER_ID where 1=1
+        <if test=" standardName !=null and standardName !=''">
+            and b.LAWITEM_NAME  LIKE '%${standardName}%'
+        </if>
+        <if test=" organization !=null and organization !=''">
+            and b.organization  LIKE '%${organization}%'
+        </if>
+    </select>
+</mapper>
